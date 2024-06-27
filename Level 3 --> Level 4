@@ -1,0 +1,247 @@
+┌──(ra6narok㉿kali)-[~]
+└─$ sshpass -p CAESARISEASY ssh krypton3@krypton.labs.overthewire.org -p 2231                          
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton3@bandit:~$ whoami
+krypton3
+krypton3@bandit:~$ cd /krypton/krypton3/
+krypton3@bandit:/krypton/krypton3$ ls
+found1  found2  found3  HINT1  HINT2  krypton4  README
+krypton3@bandit:/krypton/krypton3$ cat krypton4
+KSVVW BGSJD SVSIS VXBMN YQUUK BNWCU ANMJS 
+krypton3@bandit:/krypton/krypton3$ cat found1
+CGZNL YJBEN QYDLQ ZQSUQ NZCYD SNQVU BFGBK GQUQZ QSUQN UZCYD SNJDS UDCXJ ZCYDS NZQSU QNUZB WSBNZ QSUQN UDCXJ CUBGS BXJDS UCTYV SUJQG WTBUJ KCWSV LFGBK GSGZN LYJCB GJSZD GCHMS UCJCU QJLYS BXUMA UJCJM JCBGZ CYDSN CGKDC ZDSQZ DVSJJ SNCGJ DSYVQ CGJSO JCUNS YVQZS WALQV SJJSN UBTSX COSWG MTASN BXYBU CJCBG UWBKG JDSQV YDQAS JXBNS OQTYV SKCJD QUDCX JBXQK BMVWA SNSYV QZSWA LWAKB MVWAS ZBTSS QGWUB BGJDS TSJDB WCUGQ TSWQX JSNRM VCMUZ QSUQN KDBMU SWCJJ BZBTT MGCZQ JSKCJ DDCUE SGSNQ VUJDS SGZNL YJCBG UJSYY SNXBN TSWAL QZQSU QNZCY DSNCU BXJSG CGZBN YBNQJ SWQUY QNJBX TBNSZ BTYVS OUZDS TSUUM ZDQUJ DSICE SGNSZ CYDSN QGWUJ CVVDQ UTBWS NGQYY VCZQJ CBGCG JDSNB JULUJ STQUK CJDQV VUCGE VSQVY DQASJ UMAUJ CJMJC BGZCY DSNUJ DSZQS UQNZC YDSNC USQUC VLANB FSGQG WCGYN QZJCZ SBXXS NUSUU SGJCQ VVLGB ZBTTM GCZQJ CBGUS ZMNCJ LUDQF SUYSQ NSYNB WMZSW TBUJB XDCUF GBKGK BNFAS JKSSG QGWDC USQNV LYVQL UKSNS TQCGV LZBTS WCSUQ GWDCU JBNCS UESGN SUDSN QCUSW JBJDS YSQFB XUBYD CUJCZ QJCBG QGWQN JCUJN LALJD SSGWB XJDSU COJSS GJDZS GJMNL GSOJD SKNBJ STQCG VLJNQ ESWCS UMGJC VQABM JCGZV MWCGE DQTVS JFCGE VSQNQ GWTQZ ASJDZ BGUCW SNSWU BTSBX JDSXC GSUJS OQTYV SUCGJ DSSGE VCUDV QGEMQ ESCGD CUVQU JYDQU SDSKN BJSJN QECZB TSWCS UQVUB FGBKG QUNBT QGZSU QGWZB VVQAB NQJSW KCJDB JDSNY VQLKN CEDJU TQGLB XDCUY VQLUK SNSYM AVCUD SWCGS WCJCB GUBXI QNLCG EHMQV CJLQG WQZZM NQZLW MNCGE DCUVC XSJCT SQGWC GJKBB XDCUX BNTSN JDSQJ NCZQV ZBVVS QEMSU YMAVC UDSWJ DSXCN UJXBV CBQZB VVSZJ SWSWC JCBGB XDCUW NQTQJ CZKBN FUJDQ JCGZV MWSWQ VVAMJ JKBBX JDSYV QLUGB KNSZB EGCUS WQUUD QFSUY SQNSU 
+krypton3@bandit:/krypton/krypton3$ cat HINT1
+Some letters are more prevalent in English than others.
+krypton3@bandit:/krypton/krypton3$ cat HINT2
+"Frequency Analysis" is your friend.
+
+*ENGLISH LETTER FREQUENCY ANALYSIS*
+
+"e"	12.702	1 
+"t"	9.056	2 
+"a"	8.167	3 
+"o"	7.507	4 
+"i"	6.9662	5 
+"n"	6.749	6 
+"s"	6.327	7 
+"h"	6.094	8 
+"r"	5.987	9 
+"d"	4.253	10
+"l"	4.025	11
+"c"	2.782	12
+"u"	2.758	13
+"m"	2.406	14
+"w"	2.360	15
+"f"	2.228	16
+"g"	2.015	17
+"y"	1.974	18
+"p"	1.929	19
+"b"	1.492	20
+"v"	0.978	21
+"k"	0.772	22
+"j"	0.153	23
+"x"	0.150	24
+"q"	0.095	25
+"z"	0.074	26
+
+krypton3@bandit:/krypton/krypton3$ mktemp -d
+/tmp/tmp.Jcw7cDHAN3
+krypton3@bandit:/krypton/krypton3$ cd /tmp/tmp.Jcw7cDHAN3
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ ls
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ touch freq_analysis.py
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ vim freq_analysis.py
+
+#!/usr/bin/python3
+
+import sys
+
+if __name__=="__main__":
+
+	char_table = {}
+	char_total = 0
+	groupsize = 0
+
+	#Check Argument Counts
+	if len(sys.argv) != 3:
+		print("Usage: python3 freq_analysis.py filename groupsize")
+		exit(0)
+	else:
+
+		try:
+			groupsize = int(sys.argv[2])
+		except:
+			print("groupsize must be an int")
+			exit(0)
+
+		# Try to Open the specified file
+		try:
+			with open(sys.argv[1]) as fh:
+				lines = fh.readlines()
+		except:
+			print("No file named '" + sys.argv[1] + "'")
+			exit(0)
+
+		for line in lines:
+			line = line.replace(" ", "")
+			line = line.replace("\n", "")
+			for i in range(len(line) - groupsize):
+				group = line[i:i+groupsize]
+				if group in char_table:
+					char_table[group] += 1
+				else:
+					char_table[group] = 1
+
+		char_table = sorted(char_table.items(), key=lambda x: x[1], reverse=True)
+
+		for char in char_table:
+			print(char[0] + ":\t" + str(char[1]))
+*ESC* *SHIFT* :wq
+
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ ls
+freq_analysis.py
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cp /krypton/krypton3/krypton4 ./
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ ls
+freq_analysis.py  krypton4
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4
+KSVVW BGSJD SVSIS VXBMN YQUUK BNWCU ANMJS 
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ python3 freq_analysis.py /krypton/krypton3/found1 1
+S:	155  <---------#1 ENGLISH LETTER FREQUENCY ANALYSIS "E"
+C:	107
+Q:	106
+J:	102
+U:	99
+B:	87
+G:	81
+N:	74
+D:	69
+Z:	57
+V:	56
+W:	47
+Y:	42
+T:	32
+X:	29
+M:	29
+L:	27
+K:	25
+A:	20
+E:	17
+F:	11
+O:	7
+H:	2
+I:	2
+R:	1
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ python3 freq_analysis.py /krypton/krypton3/found2 1
+S:	243  <---------#1 ENGLISH LETTER FREQUENCY ANALYSIS "E"  - tr "[S]" "[E]"
+Q:	186
+J:	158
+N:	135
+U:	130
+B:	129
+D:	118
+G:	111
+C:	86
+W:	66
+Z:	59
+V:	53
+M:	45
+T:	37
+E:	34
+X:	33
+Y:	33
+K:	30
+L:	27
+A:	26
+I:	14
+F:	12
+O:	3
+H:	2
+R:	2
+P:	1
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ python3 freq_analysis.py /krypton/krypton3/found1 3
+JDS:	19  <------------MOST COMMON 3 LETTER WORD IN THE ENGLISH LANGUAGE IS "THE" - tr "[JDS]" "[THE]"
+DSN:	11
+QGW:	11
+SUQ:	10
+JCB:	10
+CBG:	10
+DCU:	10
+ZCY:	8
+CYD:	8
+YDS:	8
+ZQS:	7
+QSU:	7
+UQN:	7
+YVQ:	7
+SWC:	7
+GJD:	6
+ZBT:	6
+GBK:	5
+BKG:	5
+BXJ:	5
+CGJ:	5
+BTS:	5
+BGU:	5
+CZQ:	5
+SSG:	5
+QJC:	5
+CGE:	5
+CGZ:	4
+SNQ:	4
+FGB:	4
+JCU:	4
+SBX:	4
+XJD:	4
+SUC:	4
+TYV:	4
+YVS:	4
+CJC:	4
+UJC:	4
+SNC:	4
+SYV:	4
+NSY:	4
+ASJ:	4
+KCJ:	4
+CJD:	4
+DQU:	4
+SNS:	4
+TSW:	4
+SWQ:	4
+ZQJ:	4
+UJD:	4
+CUS:	4
+WCG:	4
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDS]" "[THE]"
+KEVVW BGETH EVEIE VXBMN YQUUK BNWCU ANMTE  <---------KEVVW BGE THE VEIE VXBMN YQUUK BNWCU ANMTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSC]" "[THEA]"
+KEVVW BGETH EVEIE VXBMN YQUUK BNWAU ANMTE krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ 
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQ]" "[THEAO]"
+KEVVW BGETH EVEIE VXBMN YOUUK BNWAU ANMTE krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ 
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQU]" "[THEAOI]"
+KEVVW BGETH EVEIE VXBMN YOIIK BNWAI ANMTE  
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQUV" "[THEAOIL]"
+KELLW BGETH ELEIE LXBMN YOIIK BNWAI ANMTE 
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQUVK" "[THEAOILW]"
+WELLW BGETH ELEIE LXBMN YOIIW BNWAI ANMTE  <---------WELL WBGE THE LEIEL XBMN YOIIW BNWAI ANMTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQUVKW" "[THEAOILWD]"
+WELLD BGETH ELEIE LXBMN YOIIW BNDAI ANMTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQUVKWB" "[THEAOILWDO]"
+WELLD OGETH ELEIE LXOMN YOIIW ONDAI ANMTE 
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQUVKWBG" "[THEAOILWDON]"
+WELLD ONETH ELEIE LXOMN YOIIW ONDAI ANMTE  <---------WELL DONE THE LEIEL XOMN YOIIW ONDAI ANMTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSCQSVKWBGI" "[THEAOILWDONV]"
+WELLD ONETH ELEVE LXOMN YOIIW ONDAI ANMTE  <----------WELL DONE THE LEVEL XOMN YOIIW ONDAI ANMTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSOQUVKWBGI" "[THEAOSLWDONV]"
+WELLD ONETH ELEVE LXOMN YASSW ONDCS ANMTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSOQUVKWBGIY" "[THEAOSLWDONVP]"
+WELLD ONETH ELEVE LXOMN POSSW ONDCS ANMTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSOQUVKWBGIYNCXM" "[THEAOSLWDONVPRIYU]"
+WELLD ONETH ELEVE LYOUR PASSW ORDIS ARUTE  <----------=WELL DONE THE LEVEL YOUR POSSWORD IS ARUTE
+krypton3@bandit:/tmp/tmp.Jcw7cDHAN3$ cat krypton4 |tr "[JDSOQUVKWBGIYNCXMA]" "[THEAOSLWDONVPRIYUB]"
+WELLD ONETH ELEVE LYOUR PASSW ORDIS BRUTE  <----------WELL DONE THE LEVEL YOUR PASSWORD IS BRUTE  <----------PASSWORD
+
