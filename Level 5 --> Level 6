@@ -1,0 +1,219 @@
+┌──(ra6narok㉿kali)-[~]
+└─$ sshpass -p CLEARTEXT ssh krypton5@krypton.labs.overthewire.org -p 2231 
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton5@bandit:~$ whoami
+krypton5
+krypton5@bandit:~$ cd /krypton/krypton5
+krypton5@bandit:/krypton/krypton5$ ls
+found1  found2  found3  krypton6  README
+krypton5@bandit:/krypton/krypton5$ cat krypton6
+BELOS Zkrypton5@bandit:/krypton/krypton5$ cat found1
+SXULW GNXIO WRZJG OFLCM RHEFZ ALGSP DXBLM PWIQT XJGLA RIYRI BLPPC HMXMG CTZDL CLKRU YMYSJ TWUTX ZCMRH EFZAL OTMNL BLULV MCQMG CTZDL CPTBI AVPML NVRJN SSXWT XJGLA RIQPE FUGVP PGRLG OMDKW RSIFK TZYRM QHNXD UOWQT XJGLA RIQAV VTZVP LMAIV ZPHCX FPAVT MLBSD OIFVT PBACS EQKOL BCRSM AMULP SPPYF CXOKH LZXUO GNLID ZVRAL DOACC INREN YMLRH VXXJD XMSIN BXUGI UPVRG ESQSG YKQOK LMXRS IBZAL BAYJM AYAVB XRSIC KKPYH ULWFU YHBPG VIGNX WBIQP RGVXY SSBEL NZLVW IMQMG YGVSW GPWGG NARSP TXVKL PXWGD XRJHU SXQMI VTZYO GCTZR JYVBK MZHBX YVBIT TPVTM OOWSA IERTA SZCOI TXXLY JAZQC GKPCS LZRYE MOOVC HIEKT RSREH MGNTS KVEPN NCTUN EOFIR TPPDL YAPNO GMKGC ZRGNX ARVMY IBLXU QPYYH GNXYO ACCIN QBUQA GELNR TYQIH LANTW HAYCP RJOMO KJYTV SGVLY RRSIG NKVXI MQJEG GJOML MSGNV VERRC MRYBA GEQNP RGKLB XFLRP XRZDE JESGN XSYVB DSSZA LCXYE ICXXZ OVTPW BLEVK ZCDEA JYPCL CDXUG MARML RWVTZ LXIPL PJKKL CIREP RJYVB ITPVV ZPHCX FPCRG KVPSS CPBXW VXIRS SHYTU NWCGI ANNUN VCOEA JLLFI LECSO OLCTG CMGAT SBITP PNZBV XWUPV RIHUM IBPHG UXUQP YYHNZ MOKXD LZBAK LNTCC MBJTZ KXRSM FSKZC SSELP UMARE BCIPK GAVCY EXNOG LNLCC JVBXH XHRHI AZBLD LZWIF YXKLM PELQG RVPAF ZQNVK VZLCE MPVKP FERPM AZALV MDPKH GKKCL YOLRX TSNIB ELRYN IVMKP ECVXH BELNI OETUX SSYGV TZARE RLVEG GNOQC YXFCX YOQYO ISUKA RIQHE YRHDS REFTB LEVXH MYEAJ PLCXK TRFZX YOZCY XUKVV MOJLR RMAVC XFLHO KXUVE GOSAR RHBSS YHQUS LXSDJ INXLH PXCCV NVIPX KMFXV ZLTOW QLKRY TZDLC DTVXB ACSDE LVYOL BCWPE ERTZD TYDXF AILBR YEYEG ESIHC QMPOX UDMLZ VVMBU KPGEC EGIWO HMFXG NXPBW KPVRS XZCEE PWVTM OOIYC XURRV BHCCS SKOLX XQSEQ RTAOP WNSZK MVDLC PRTRB ZRGPZ AAGGK ZIMAP RLKVW EAZRT XXZCS DMVVZ BZRWS MNRIM ZSRYX IEOVH GLGNL FZKHX KCESE KEHDI FLZRV KVFIB XSEKB TZSPE EAZMV DLCSY ZGGYK GCELN TTUIG MXQHT BJKXG ZRFEX ABIAP MIKWA RVMFK UGGFY JRSIP NBJUI LDSSZ ALMSA VPNTX IBSMO
+
+ypton5@bandit:/krypton/krypton5$ mktemp -d
+/tmp/tmp.XMkuhqOE4H
+krypton5@bandit:/krypton/krypton5$ cd /tmp/tmp.XMkuhqOE4H
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ touch KeyLength.py
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ vim KeyLength.py
+
+
+import sys
+
+if __name__=='__main__':
+	
+	rep_seq = []
+	rep_seq_spaces = []
+	tallys = [0]*20
+
+	if len(sys.argv) != 2:
+		print("Usage: python3 keyLength.py filename")
+		exit(0)
+	else:
+
+		try:
+			with open(sys.argv[1]) as fh:
+				lines = fh.readlines()
+		except:
+			print("No file named '" + sys.argv[1] + "'")
+			exit(0)
+
+		for line in lines:
+			line.replace(" ", "")
+			line.replace("\n", "")
+			for length in range(3,5+1):
+				for i in range(len(line)-length+1):
+					q = line[i:i+length]
+					for j in range(i+1,len(line)-length+1):
+						r = line[j:j+length]
+						if q == r:
+							rep_seq.append(q)
+							rep_seq_spaces.append(j-i)
+
+		for n in rep_seq_spaces:
+			for i in range(1,20):
+				if n % i == 0:
+					tallys[i] = tallys[i] + 1
+
+		s = sum(tallys)
+		if s == 0:
+			print("No repeating sequences")
+		else :
+			print("Chance key length is: ")
+			for i in range(1,len(tallys)):
+				print(str(i) + " = " + str(round((tallys[i]/s)* 100,2)) + "%")
+*ESC* *SHIFT* :wq
+
+*2ND TERMINAL*
+┌──(ra6narok㉿kali)-[~]
+└─$ scp -P 2231 vignere_decoder.py krypton5@krypton.labs.overthewire.org:/tmp/tmp.XMkuhqOE4H
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton5@krypton.labs.overthewire.org's password: CLEARTEXT
+vignere_decoder.py                                                                                                                                                                                         100%  722     4.3KB/s   00:00
+
+                                                                                                                                                                                                                                            
+┌──(ra6narok㉿kali)-[~]
+└─$ scp -P 2231 vignere_shift.py krypton5@krypton.labs.overthewire.org:/tmp/tmp.XMkuhqOE4H
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton5@krypton.labs.overthewire.org's password: CLEARTEXT 
+vignere_shift.py                                                                                                                                                                                           100%  734     3.0KB/s   00:00
+
+                                                                                                                                                                                                                                            
+┌──(ra6narok㉿kali)-[~]
+└─$ scp -P 2231 freq_analysis.py krypton5@krypton.labs.overthewire.org:/tmp/tmp.XMkuhqOE4H 
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton5@krypton.labs.overthewire.org's password: CLEARTEXT
+freq_analysis.py                                                                                                                                                                                           100%  903     5.8KB/s   00:00
+
+*1ST TERMINAL*
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ ls
+freq_analysis.py  KeyLength.py  vignere_decoder.py  vignere_shift.py
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ python3 KeyLength.py /krypton/krypton5/found1
+Chance key length is: 
+1 = 14.82%
+2 = 13.64%
+3 = 12.92%
+4 = 6.12%
+5 = 2.04%
+6 = 12.92%  <-------------------AVG KEYLENGTH*
+7 = 1.96%
+8 = 2.6%
+9 = 9.03%   <-------------------AVG KEYLENGTH*
+10 = 1.82%
+11 = 1.01%
+12 = 5.84%
+13 = 0.87%
+14 = 1.68%
+15 = 1.73%
+16 = 0.89%
+17 = 0.42%
+18 = 9.03%
+19 = 0.67%
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ python3 KeyLength.py /krypton/krypton5/found2
+Chance key length is: 
+1 = 14.96%
+2 = 13.22%
+3 = 12.34%
+4 = 5.99%
+5 = 2.15%
+6 = 12.34%  <-------------------AVG KEYLENGTH*
+7 = 2.1%
+8 = 3.06%
+9 = 8.5%    <-------------------AVG KEYLENGTH*
+10 = 1.74%
+11 = 1.66%
+12 = 5.47%
+13 = 1.52%
+14 = 1.96%
+15 = 1.57%
+16 = 1.44%
+17 = 0.69%
+18 = 8.5%
+19 = 0.77%
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ python3 vignere_shift.py /krypton/krypton5/found1 9 0 > found1_shift0  <---------KEY LENGTH IS 9 , THE SHIFT AMOUNT IS 0
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ cat found1_shift0
+SOCGWRCDYCOVDPSRPKYORPCBBBPKLOYDGQMBBYBBSWSRXSOBBOSYCOSKNDKRQOQQAKYXOEGBDYCOKCRXCBCPXNNFCBXMQKNKCRVNXDLPZFVCNVBXROORSXCOMCVBXPXODCBDBIDKOBCOBXODRZWCRSGXDFZDKIKBRYUMB
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ python3 freq_analysis.py found1_shift0 1  <----------GROUP SIZE IS 1
+B:	19  <---------#1 ENGLISH LETTER FREQUENCY ANALYSIS "E"
+O:	17
+C:	17
+R:	12
+D:	12
+X:	12
+K:	11
+S:	9
+Y:	8
+P:	7
+N:	6
+V:	5
+Q:	5
+G:	4
+M:	4
+W:	3
+F:	3
+Z:	3
+L:	2
+I:	2
+A:	1
+E:	1
+U:	1
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <--------KEY
+01234567890123456789012345   <--------KEY
+
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ python3 vignere_shift.py /krypton/krypton5/found2 9 0 > found2_shift0  <---------KEY LENGTH IS 9 , THE SHIFT AMOUNT IS 0
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ python3 freq_analysis.py found2_shift0 1  <----------GROUP SIZE IS 1
+O:	24  <---------#1 ENGLISH LETTER FREQUENCY ANALYSIS "E"
+Y:	22
+K:	20
+D:	18
+S:	12
+R:	9
+X:	9
+C:	8
+B:	7
+V:	6
+M:	6
+N:	5
+Q:	5
+G:	4
+P:	4
+E:	4
+W:	4
+L:	4
+I:	2
+F:	2
+Z:	1
+A:	1
+ABCDEFGHIJKLMNOPQRSTUVWXYZ   <--------KEY
+01234567890123456789012345   <--------KEY
+O=14 - E=4 = 10=K
+
+KEYLENGTH
+
+krypton5@bandit:/tmp/tmp.XMkuhqOE4H$ python3 vignere_decoder.py /krypton/krypton5/krypton6 KEYLENGTH
+Decoding file '/krypton/krypton5/krypton6' with key 'KEYLENGTH':
+
+RANDOM  <----------PASSWORD
