@@ -1,0 +1,103 @@
+┌──(ra6narok㉿kali)-[~]
+└─$ sshpass -p RANDOM ssh krypton6@krypton.labs.overthewire.org -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton6@bandit:~$ whoami
+krypton6
+krypton6@bandit:~$ cd /krypton/krypton6
+krypton6@bandit:/krypton/krypton6$ ls
+encrypt6  HINT1  HINT2  keyfile.dat  krypton7  onetime  README 
+krypton6@bandit:/krypton/krypton6$ mktemp -d
+/tmp/tmp.JhNXal3xAm
+krypton6@bandit:/krypton/krypton6$ cd /tmp/tmp.JhNXal3xAm
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ ln -s /krypton/krypton6/keyfile.dat
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ ls
+keyfile.dat
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ chmod 777 .
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ ls
+keyfile.dat
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ ls /krypton/krypton6
+encrypt6  HINT1  HINT2  keyfile.dat  krypton7  onetime  README
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ touch tale.txt
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ vim tale.txt
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ cat tale.txt
+ISWASTHEBESTOFTIMESITWASTHEWORSTOFTIMES
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ /krypton/krypton6/encrypt6 tale.txt ciphertale
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ ls
+ciphertale  keyfile.dat  tale.txt
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ cat ciphertale
+MAYTVZFMZDCMVSLQDJPGVLFMXVGGFEWBQYWOKMQ
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ xxd -b tale.txt
+00000000: 01001001 01010011 01010111 01000001 01010011 01010100  ISWAST
+00000006: 01001000 01000101 01000010 01000101 01010011 01010100  HEBEST
+0000000c: 01001111 01000110 01010100 01001001 01001101 01000101  OFTIME  <---------BINARY FOR THE TALE.TXT FILE
+00000012: 01010011 01001001 01010100 01010111 01000001 01010011  SITWAS
+00000018: 01010100 01001000 01000101 01010111 01001111 01010010  THEWOR
+0000001e: 01010011 01010100 01001111 01000110 01010100 01001001  STOFTI
+00000024: 01001101 01000101 01010011 00001010                    MES.
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ 
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ xxd -b ciphertale
+00000000: 01001101 01000001 01011001 01010100 01010110 01011010  MAYTVZ
+00000006: 01000110 01001101 01011010 01000100 01000011 01001101  FMZDCM
+0000000c: 01010110 01010011 01001100 01010001 01000100 01001010  VSLQDJ  <---------BINARY FOR THE CIPHERTALE FILE
+00000012: 01010000 01000111 01010110 01001100 01000110 01001101  PGVLFM
+00000018: 01011000 01010110 01000111 01000111 01000110 01000101  XVGGFE
+0000001e: 01010111 01000010 01010001 01011001 01010111 01001111  WBQYWO
+00000024: 01001011 01001101 01010001                             KMQ
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+01234567890123456789012345 
+
+XOR'D has a 1 = 1
+
+00 -> 0
+01 -> 1
+10 -> 1
+11 -> 0 = both have 1's
+
+PLAINTEXT XOR'D =  01001001
+CIPHERTEXT XOR'D = 01001101
+KEYTEXT XOR'D =    00000100 -> 4 -> E
+
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ python3 -c "print('A'*100)"
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ python3 -c "print('A'*100)" > a.txt
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ cat a.txt
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ /krypton/krypton6/encrypt6 a.txt cipher_a.txt
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ cat cipher_a.txt
+EICTDGYIYZKTHNSIRFXYCPFUEOCKRNEICTDGYIYZKTHNSIRFXYCPFUEOCKRNEICTDGYIYZKTHNSIRFXYCPFUEOCKRNEICTDGYIYZ
+
+EICTDGYIYZKTHNSIRFXYCPFUEOCKRN
+EICTDGYIYZKTHNSIRFXYCPFUEOCKRN  <----------LINES KEEP REPEATING
+EICTDGYIYZKTHNSIRFXYCPFUEOCKRN
+EICTDGYIYZ
+
+
+*2ND TERMINAL*
+┌──(ra6narok㉿kali)-[~]
+└─$ scp -P 2231 vignere_decoder.py krypton6@krypton.labs.overthewire.org:/tmp/tmp.JhNXal3xAm
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton6@krypton.labs.overthewire.org's password: 
+vignere_decoder.py                                                                                                                                                                                       100%  722     3.6KB/s   00:00  
+
+
+*1ST TERMINAL*
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ ls
+a.txt  cipher_a.txt  ciphertale  keyfile.dat  tale.txt  vignere_decoder.py
+krypton6@bandit:/tmp/tmp.JhNXal3xAm$ python3 vignere_decoder.py /krypton/krypton6/krypton7 EICTDGYIYZKTHNSIRFXYCPFUEOCKRN
+Decoding file '/krypton/krypton6/krypton7' with key 'EICTDGYIYZKTHNSIRFXYCPFUEOCKRN':
+
+LFSRISNOTRANDOM  <----------PASSWORD
