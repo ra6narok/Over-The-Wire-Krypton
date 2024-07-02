@@ -1,0 +1,16 @@
+┌──(ra6narok㉿kali)-[~]
+└─$ sshpass -p LFSRISNOTRANDOM ssh krypton7@krypton.labs.overthewire.org -p 2231
+                      _                     _              
+                     | | ___ __ _   _ _ __ | |_ ___  _ __  
+                     | |/ / '__| | | | '_ \| __/ _ \| '_ \ 
+                     |   <| |  | |_| | |_) | || (_) | | | |
+                     |_|\_\_|   \__, | .__/ \__\___/|_| |_|
+                                |___/|_|                   
+
+krypton7@bandit:~$ whoami
+krypton7
+krypton7@bandit:~$ cd /krypton/krypton7
+krypton7@bandit:/krypton/krypton7$ ls
+README
+krypton7@bandit:/krypton/krypton7$ cat README
+Congratulations on beating Krypton!
